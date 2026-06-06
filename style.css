@@ -1,0 +1,282 @@
+/* ==============================================
+   SANITY LOSS STYLE SHEET (css/style.css)
+   深渊视觉风格 | 理智崩溃主题
+   ============================================== */
+
+/* ---------- 全局重置 增加不安感 ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;          /* 文本难以选中，诡异感 */
+    cursor: crosshair;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #010005 0%, #000000 100%);
+    font-family: 'Courier New', 'MS Gothic', 'Segoe UI Symbol', 'Fixedsys', monospace;
+    position: relative;
+}
+
+/* ---------- 噪点画布层 (动态干扰) ---------- */
+#noiseCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0.65;
+}
+
+/* ---------- 扫描线故障覆层 ---------- */
+.glitch-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.25) 0px,
+        rgba(0, 0, 0, 0.25) 2px,
+        rgba(255, 255, 255, 0.07) 2px,
+        rgba(255, 255, 255, 0.07) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.5;
+    mix-blend-mode: screen;
+    animation: scanMove 8s linear infinite;
+}
+
+@keyframes scanMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 20px; }
+}
+
+/* ---------- 主容器 + 扭曲抖动 ---------- */
+.distortion-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    animation: subtle-shake 1.8s infinite ease-in-out;
+}
+
+@keyframes subtle-shake {
+    0% { transform: translate(0px, 0px) skew(0deg); }
+    10% { transform: translate(-1.2px, 1.2px) skew(0.3deg); }
+    20% { transform: translate(1.2px, -1px) skew(-0.2deg); }
+    30% { transform: translate(-0.8px, -0.8px) skew(0.2deg); }
+    40% { transform: translate(0.8px, 0.5px) skew(-0.1deg); }
+    70% { transform: translate(0px, 0px) skew(0deg); }
+    100% { transform: translate(0px, 0px) skew(0deg); }
+}
+
+/* ---------- 核心面板 · 精神污染玻璃体 ---------- */
+.san-panel {
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(70, 200, 90, 0.4);
+    border-radius: 48px;
+    padding: 2.2rem 3rem;
+    max-width: 85%;
+    width: 720px;
+    text-align: center;
+    box-shadow: 0 0 55px rgba(0, 255, 0, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.9);
+    transition: all 0.2s cubic-bezier(0.2, 1.2, 0.4, 1);
+    animation: borderPulse 1.4s infinite alternate;
+}
+
+@keyframes borderPulse {
+    0% {
+        border-color: rgba(70, 230, 110, 0.4);
+        box-shadow: 0 0 20px rgba(0, 230, 0, 0.2);
+    }
+    100% {
+        border-color: rgba(220, 40, 90, 0.8);
+        box-shadow: 0 0 55px rgba(255, 20, 80, 0.6);
+    }
+}
+
+/* SAN数值 —— 诡异绿色 + 闪烁 */
+.san-value {
+    font-size: 4.8rem;
+    font-weight: bold;
+    letter-spacing: 6px;
+    font-family: monospace;
+    color: #bbffaa;
+    text-shadow: 0 0 6px #0f0, 0 0 22px #0a0, 3px 3px 0px #001100;
+    background: #000000aa;
+    display: inline-block;
+    padding: 0.2rem 1.4rem;
+    border-radius: 80px;
+    margin-bottom: 1.6rem;
+    border: 1px solid #8affaa;
+    transition: text-shadow 0.08s linear, color 0.1s;
+}
+
+/* 警告文本 : 扭曲错位感 */
+.warning-text {
+    font-size: 1.45rem;
+    color: #ffbb88;
+    text-shadow: 0 0 3px red, 0.5px 0.5px 0px #4a0000;
+    margin: 20px 0;
+    word-break: break-word;
+    transition: all 0.04s linear;
+    letter-spacing: 1px;
+    line-height: 1.5;
+}
+
+/* 按钮组深渊风格 */
+.button-group {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.void-btn {
+    background: #0a1009;
+    border: 1.5px solid #88ffaa;
+    color: #ccffdd;
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 32px;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 0 12px #2eff8e33;
+    letter-spacing: 2.5px;
+    backdrop-filter: blur(4px);
+}
+
+.void-btn:hover {
+    background: #2a3a2a;
+    box-shadow: 0 0 26px #00ffaa;
+    color: #ffffff;
+    transform: scale(1.03);
+    border-color: #ffe6aa;
+    text-shadow: 0 0 4px black;
+}
+
+.void-btn:active {
+    transform: scale(0.94);
+    filter: hue-rotate(30deg);
+}
+
+/* 底部扭曲日志 */
+.corrupted-log {
+    position: fixed;
+    bottom: 18px;
+    left: 18px;
+    font-size: 11px;
+    color: #7ea37e;
+    background: #000000bb;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-family: monospace;
+    z-index: 20;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+    letter-spacing: 1.5px;
+    border-left: 2px solid #3eff6e;
+    white-space: nowrap;
+    animation: textFlicker 2.3s infinite;
+}
+
+@keyframes textFlicker {
+    0% { opacity: 0.7; text-shadow: 0 0 0px green; }
+    50% { opacity: 1; text-shadow: 0 0 4px #0f0; }
+    100% { opacity: 0.6; text-shadow: 0 0 0px #0f0; }
+}
+
+/* 眼球浮动容器 —— 窥探深渊 */
+.eye-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 25px;
+    z-index: 25;
+    pointer-events: none;
+}
+
+.eyeball {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff, #ccc, #222);
+    box-shadow: 0 0 12px rgba(255, 0, 40, 0.6);
+    transition: all 0.1s linear;
+    animation: eyeRotate 6s infinite alternate;
+    border: 1px solid darkred;
+    position: relative;
+}
+
+.eyeball::after {
+    content: "⚫";
+    position: absolute;
+    font-size: 28px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    filter: blur(0.6px);
+    text-shadow: 0 0 2px red;
+}
+
+@keyframes eyeRotate {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(6px, -4px) scale(1.1); opacity: 1; background: radial-gradient(circle at 30% 20%, #ffaaaa, #441111);}
+    100% { transform: translate(-4px, 5px) scale(0.95); opacity: 0.8;}
+}
+
+/* 追加全局Glitch文字类 (随机故障会使用) */
+.glitch-blink {
+    animation: glitchText 0.12s infinite;
+}
+
+@keyframes glitchText {
+    0% { text-shadow: -2px 0 red, 2px 0 blue; opacity: 0.9; transform: skew(0.8deg);}
+    50% { text-shadow: 2px 0 cyan, -2px 0 magenta; opacity: 1; transform: skew(-0.5deg);}
+    100% { text-shadow: -1px 0 lime, 1px 0 purple; opacity: 0.85; transform: skew(0.3deg);}
+}
+
+/* 屏幕边缘流血暗角 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.8), inset 0 0 70px rgba(100, 0, 20, 0.3);
+    pointer-events: none;
+    z-index: 30;
+}
+
+/* 响应式微调 */
+@media (max-width: 650px) {
+    .san-value { font-size: 2.8rem; }
+    .warning-text { font-size: 1rem; }
+    .void-btn { padding: 6px 18px; font-size: 0.9rem; }
+    .san-panel { padding: 1.2rem 1rem; width: 90%; }
+    .eye-container { bottom: 15px; right: 15px; gap: 15px; }
+    .eyeball { width: 38px; height: 38px; }
+    .corrupted-log { font-size: 8px; white-space: nowrap; max-width: 70%; overflow-x: auto; }
+}

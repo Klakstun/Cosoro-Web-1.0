@@ -1,2 +1,113 @@
-# Cosoro-Web-1.0
-A glitch-horror web toy where you lose Sanity Points (SAN). Gaze into the abyss (lose 8–22), pray (gain 6–18, 20% backfire), or reset. Low SAN = more noise, glitches, red glow, and distortion sounds. Independent CSS/JS. A playful tribute to the "losing SAN" meme. 🌀
+# 🧠 SAN CHECK — 深渊回响
+
+> “不要凝视深渊，除非你准备好了理智检定。”
+
+一个模拟理智值（SAN）下降的交互式Web实验。通过视觉扭曲、毛刺音效和随机精神污染事件，让你体验“掉san”的全过程。  
+**CSS 与 JS 均为独立文件**，适合作为恐怖风格或克苏鲁主题的展示/小游戏模板。
+
+---
+
+## 📁 项目结构
+
+```
+
+san-check/
+├── index.html          # 主页面结构
+├── css/
+│   └── style.css       # 视觉风格、动画、扭曲、深渊主题
+├── js/
+│   └── script.js       # 理智逻辑、噪音画布、音效污染、随机事件
+└── README.md           # 说明文档
+
+```
+
+---
+
+## 🎮 功能玩法
+
+| 操作 | 效果 |
+|------|------|
+| **凝视深渊** | 大幅降低SAN值（-8~-22），触发强烈故障效果和毛刺音效。 |
+| **默念祷文** | 回复SAN值（+6~+18），但有20%几率失败并反噬掉SAN。 |
+| **重置心智** | 将SAN恢复至100，清除崩溃状态，重启系统。 |
+
+> SAN值越低：  
+> - 噪点越密集  
+> - 文字闪烁越频繁  
+> - 面板边框转为血红色  
+> - 随机触发屏幕抖动和音频失真  
+> - SAN归零后进入“永暗”状态，需重置才可继续
+
+---
+
+## 🧩 独立组件说明
+
+### `css/style.css`
+- 噪点画布叠加层、扫描线故障动画
+- 深渊玻璃面板 + 脉动边框
+- 眼球浮动、底部日志扭曲效果
+- 响应式适配（手机/PC）
+
+### `js/script.js`
+- SAN值状态机（0～100）
+- Web Audio 毛刺音效生成器（动态失真波）
+- 实时噪点画布（性能优化 requestAnimationFrame）
+- 随机被动掉san事件（每隔约12~20秒）
+- 按钮交互 + 理智崩溃终极特效
+
+---
+
+## 🚀 如何运行
+
+1. 确保目录结构如下：
+```
+
+你的文件夹/
+├── index.html
+├── css/
+│   └── style.css
+└── js/
+└── script.js
+
+```
+
+2. 使用任意本地服务器或直接双击 `index.html`（现代浏览器支持）。
+
+   > 由于Web Audio策略，首次点击任意按钮时会自动初始化音频上下文。部分浏览器可能需要用户首次点击后才能播放声音。
+
+3. 开始凝视深渊…… 🕳️
+
+---
+
+## ⚙️ 自定义参数
+
+你可以在 `js/script.js` 中调整：
+
+```javascript
+let sanity = 100;          // 初始理智值
+loss = 8 + Math.floor(Math.random() * 14);  // 凝视伤害范围
+gain = 6 + Math.floor(Math.random() * 12);  // 祈祷回复范围
+passiveSanityDrain 定时器间隔 / 掉san概率
+```
+
+视觉强度可在 drawNoise() 函数中修改 intensity 系数。
+
+---
+
+🧙‍♂️ 彩蛋/细节
+
+· 右下角眼球会随机漂移，仿佛在窥探你
+· 底部日志信息会随SAN变化而愈渐疯狂
+· 重置时会播放一段“复苏”音调，象征暂时逃离
+
+---
+
+📜 致谢
+
+灵感源自克苏鲁神话中的理智检定以及经典“掉 san” meme。
+专为那些喜欢 精神污染 UI 和 氛围交互 的访客设计。
+
+若在运行中感到不安，请记得 —— 这只是一次虚拟的理智检定。
+深呼吸，关闭页面，回到现实。
+
+Enjoy the madness… 🌀

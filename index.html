@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>【SAN CHECK】深渊回响</title>
+    <!-- 引入独立CSS文件 (假设位于 css/style.css) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 主视觉容器：动态噪音画布 + 故障层 + 交互内容 -->
+    <canvas id="noiseCanvas"></canvas>
+    <div class="glitch-overlay"></div>
+    
+    <div class="distortion-container">
+        <div class="san-panel" id="sanPanel">
+            <div class="san-value" id="sanValueDisplay">SAN: 100</div>
+            <div class="warning-text" id="warningMsg">
+                你的理智正在溶解...<br>
+                不要凝视深渊
+            </div>
+            <div class="button-group">
+                <button class="void-btn" id="gazeBtn">凝视深渊</button>
+                <button class="void-btn" id="prayBtn">默念祷文</button>
+                <button class="void-btn" id="resetBtn">重置心智</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="corrupted-log" id="corruptLog">
+        > 系统日志: 心跳异常 /dev/null
+    </div>
+    <div class="eye-container" id="eyeContainer">
+        <div class="eyeball" id="eyeball1"></div>
+        <div class="eyeball" id="eyeball2"></div>
+    </div>
+
+    <!-- 音频上下文：随机制造毛刺音效 (Web Audio) -->
+    <audio id="glitchSound" preload="auto" style="display:none;"></audio>
+
+    <!-- 引入独立JS文件 (假设位于 js/script.js) -->
+    <script src="js/script.js"></script>
+</body>
+</html>
